@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const app = require("../app");
 const request = require("supertest")(app);
 const seedDB = require("../seed/seed");
-const data = require("../seed/testData");
+const data = require("../seed/devData");
 
 describe("/api", function() {
   let topicDocs, userDocs, articleDocs, commentDocs;
@@ -149,7 +149,7 @@ describe("/api", function() {
     describe("/:topic_slug/articles", () => {
       it("GET return 200 and an array of articles by topic", () => {
         return request
-          .get("/api/topics/mitch/articles")
+          .get("/api/topics/coding/articles")
           .expect(200)
           .then(({ body: { articles } }) => {
             expect(articles).to.be.an("array");

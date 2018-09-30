@@ -14,13 +14,6 @@ exports.createUser = userData => {
   });
 };
 
-// exports.createRefObj = (data, docs) => {
-//   return data.reduce((acc, datum, i) => {
-//     acc[datum.created_at] = docs[i]._id;
-//     return acc;
-//   }, {});
-// };
-
 exports.createArticle = (articleData, topicDocs, userDocs) => {
   // console.log(userDocs);
   return articleData.map(article => {
