@@ -39,6 +39,8 @@ exports.getArticleId = (req, res, next) => {
 
 exports.getCommentsByArticleId = (req, res, next) => {
   Comment.find({ belongs_to: req.params.article_id })
+    .populate("created_by")
+    .populate("belongs_to")
     .then(comments => {
       res.send({ comments });
     })

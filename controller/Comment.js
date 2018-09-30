@@ -12,6 +12,8 @@ exports.getAllComment = (req, res, next) => {
 
 exports.getCommentId = (req, res, next) => {
   Comment.findOne({ _id: req.params.comment_id })
+    .populate("created_by")
+    .populate("belongs_to")
     .then(comments => {
       if (!comments) throw { status: 404, message: "bad request" };
       res.send({ comments });
