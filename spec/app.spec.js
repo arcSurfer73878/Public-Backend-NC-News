@@ -32,6 +32,7 @@ describe("/api", function() {
             expect(articles[0]).to.have.keys([
               "_id",
               "body",
+              "comment_count",
               "title",
               "created_by",
               "created_at",
@@ -46,8 +47,8 @@ describe("/api", function() {
           return request
             .get(`/api/articles/${articleDocs[0]._id}`)
             .expect(200)
-            .then(({ body: { articles } }) => {
-              expect(articles._id).to.equal(`${articleDocs[0]._id}`);
+            .then(({ body: { article } }) => {
+              expect(article._id).to.equal(`${articleDocs[0]._id}`);
             });
         });
         it("GET returns a 400 for an invalid id", () => {
@@ -60,7 +61,7 @@ describe("/api", function() {
         });
         it("GET returns a 404 for a article that does not exist", () => {
           return request
-            .get(`/api/articles/${userDocs[0]._id}`)
+            .get(`/api/articles/${commentDocs[0]._id}`)
             .expect(404)
             .then(({ body: { msg } }) => {
               expect(msg).to.equal("Page not found");
@@ -159,6 +160,7 @@ describe("/api", function() {
               "_id",
               "title",
               "body",
+              "comment_count",
               "created_at",
               "belongs_to",
               "created_by",
@@ -170,18 +172,19 @@ describe("/api", function() {
         const newArticle = {
           title: "Test",
           body: "I find this test challenging",
-          created_by: "5bae02f4bfab1b913ed6aae8"
+          created_by: "5bb14990930403c7356a708c"
         };
         return request
           .post("/api/topics/mitch/articles")
           .send(newArticle)
           .expect(201)
-          .then(({ body: { article } }) => {
+          .then(({ body: article }) => {
             expect(article).to.have.all.keys([
               "votes",
               "_id",
               "title",
               "body",
+              "comment_count",
               "created_at",
               "belongs_to",
               "created_by",
@@ -240,6 +243,39 @@ describe("/api", function() {
               expect(msg).to.equal("Page not found");
             });
         });
+        it("PATCH /api/comments/:comment_id vote up", () => {
+          const expected = { n: 1, nModified: 1, ok: 1 };
+          return request
+            .patch(`/api/comments/${commentDocs[0]._id}?vote=up`)
+            .expect(200)
+            .then(({ body: { comments } }) => {
+              expect(comments).to.have.all.keys(expected);
+              expect(comments).to.eql(expected);
+            });
+        });
+        it("PATCH /api/comments/:comment_id vote down", () => {
+          const expected = { n: 1, nModified: 1, ok: 1 };
+          return request
+            .patch(`/api/comments/${commentDocs[0]._id}?vote=down`)
+            .expect(200)
+            .then(({ body: { comments } }) => {
+              expect(comments).to.have.all.keys(expected);
+              expect(comments).to.eql(expected);
+            });
+        });
+        it("DELETE a comment by comment_id", () => {
+          const expected = {
+            n: 1,
+            ok: 1
+          };
+          return request
+            .delete(`/api/comments/${commentDocs[0]._id}`)
+            .expect(200)
+            .then(({ body: { comments } }) => {
+              expect(comments).to.have.all.keys(expected);
+              expect(comments).to.eql(expected);
+            });
+        });
       });
     });
   });
@@ -271,14 +307,6 @@ describe("/api", function() {
               expect(users.username).to.equal(`${userDocs[0].username}`);
             });
         });
-        // it("GET returns a 400 for an invalid username", () => {
-        //   return request
-        //     .get(`/api/users/${topicDocs[0]._id}`)
-        //     .expect(400)
-        //     .then(({ body: { msg } }) => {
-        //       expect(msg).to.equal("Bad request");
-        //     });
-        // });
         it("GET returns a 404 for a username that does not exist", () => {
           return request
             .get(`/api/users/supercoder93830`)

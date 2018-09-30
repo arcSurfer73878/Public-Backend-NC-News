@@ -14,7 +14,7 @@ exports.getAllArticle = (req, res, next) => {
           element => element.belongs_to._id == `${article._id}`
         ).length;
       });
-      res.send(articles);
+      res.send({ articles });
     })
     .catch(next);
 };
@@ -28,7 +28,11 @@ exports.getArticleId = (req, res, next) => {
   ])
     .then(([articles, comments]) => {
       if (!articles) throw { status: 404 };
-      else res.send({ articles, comment_count: comments.length });
+      const article = {
+        ...articles._doc,
+        comment_count: comments.length
+      };
+      res.send({ article });
     })
     .catch(next);
 };
