@@ -78,7 +78,7 @@ npm run test
 
 ### Deployement
 
-- Coming Soon...
+- [Live App](https://nc-news-kaiming.herokuapp.com/)
 
 ### Authors
 
