@@ -1,6 +1,6 @@
 ## Northcoders News API
 
-This is an API which will be displaying content from a MongoDB database.
+This is an API which will be displaying content from a MongoDB database. Users will be able to retrieve some articles, add some, comment and upvote the best ones.
 
 ### Getting Started
 
@@ -17,6 +17,7 @@ You will need:
 
 - [Node Js](https://nodejs.org/en/)
 - [Mongo](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
 
 ### Installation
 
@@ -74,6 +75,10 @@ npm run test
 - [Visual Code Studio](https://code.visualstudio.com/)
 - [Mlab](https://mlab.com)
 - [Heroku](https://dashboard.heroku.com)
+
+### Deployement
+
+- Coming Soon...
 
 ### Authors
 
