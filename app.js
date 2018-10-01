@@ -17,10 +17,6 @@ mongoose
   });
 
 app.get("/", (req, res, next) => {
-  res.send({ Message: "Hello World" });
-});
-
-app.get("/", (req, res, next) => {
   res.sendFile(`${__dirname}/views/home.html`);
   // or use ejs render
 });
