@@ -14,7 +14,6 @@ const seedDB = ({ topicData, userData, articleData, commentData }) => {
       return Promise.all([
         Topic.insertMany(createTopic(topicData)),
         User.insertMany(createUser(userData))
-        // Article.insertMany(createArticle(articleData, userData))
       ]);
     })
     .then(([topicDocs, userDocs]) => {

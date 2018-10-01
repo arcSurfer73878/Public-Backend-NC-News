@@ -15,7 +15,6 @@ exports.createUser = userData => {
 };
 
 exports.createArticle = (articleData, topicDocs, userDocs) => {
-  // console.log(userDocs);
   return articleData.map(article => {
     return {
       title: article.title,
@@ -30,7 +29,6 @@ exports.createArticle = (articleData, topicDocs, userDocs) => {
 };
 
 exports.createComment = (commentData, topicDocs, userDocs, articleDocs) => {
-  // console.log(userDocs);
   return commentData.map(comment => {
     return {
       body: comment.body,

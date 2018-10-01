@@ -7,6 +7,8 @@ const { DB_URL } =
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
+app.set("view-engine", "ejs");
+app.use(express.static("public"));
 mongoose
   .connect(
     DB_URL,
@@ -18,7 +20,6 @@ mongoose
 
 app.get("/", (req, res, next) => {
   res.sendFile(`${__dirname}/views/home.html`);
-  // or use ejs render
 });
 
 app.use("/api", apiRouter);
@@ -42,8 +43,5 @@ app.use((err, req, res, next) => {
   console.log(err);
   res.status(500).send({ msg: "Internal server error" });
 });
-
-//app.use(handle400s)
-//app.use(handle404s) ...
 
 module.exports = app;

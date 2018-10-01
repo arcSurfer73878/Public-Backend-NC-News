@@ -11,7 +11,6 @@ const {
 articleRouter.route("/").get(getAllArticle);
 
 articleRouter.route("/:article_id").get(getArticleId);
-// articleRouter.route("/:article_id").patch(getArticleId);
 
 articleRouter.route("/:article_id/comments").get(getCommentsByArticleId);
 
