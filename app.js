@@ -2,8 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const apiRouter = require("./routes/api-router.js");
-// const { APIKEY } =
-//   process.env.NODE_ENV === "production" ? process.env : require("../config");
 const { DB_URL } =
   process.env.NODE_ENV === "production" ? process.env : require("./config");
 const bodyParser = require("body-parser");

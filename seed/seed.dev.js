@@ -5,13 +5,7 @@ const { DB_URL } = require("../config");
 const data = require("./devData");
 
 mongoose
-  .connect(
-    DB_URL,
-    { useNewUrlParser: true }
-  )
-  .then(() => {
-    return mongoose.connection.dropDatabase();
-  })
+  .connect(DB_URL)
   .then(() => {
     return seedDB(data);
   })
