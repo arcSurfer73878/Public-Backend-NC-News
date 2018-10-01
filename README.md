@@ -4,7 +4,16 @@ This is an API which will be displaying content from a MongoDB database.
 
 ### Getting Started
 
+Fork and clone this repository and `cd` into it:
+
+```
+$ git clone <your fork's URL>
+$ cd BE2-northcoders-news
+```
+
 ### Prerequisites
+
+You will need:
 
 - [Node Js](https://nodejs.org/en/)
 - [Mongo](https://www.mongodb.com/)
@@ -22,7 +31,7 @@ supertest
 body-parser
 ```
 
-To install them, use:
+Make sure you've navigated into the folder and install all dependecies using:
 
 ```
 npm i <Node module>
@@ -30,7 +39,7 @@ npm i <Node module>
 
 ### Config
 
-To access the development database, set a config file like this:
+To access the development database, create a config file like this:
 
 ```
 const NODE_ENV = process.env.NODE_ENV || "development";
@@ -53,10 +62,11 @@ module.exports = config[NODE_ENV];
 
 ### Running the tests
 
-To run the test folder located at /spec/app.spec.js, use:
+You also have access to an npm script to run tests.
+The test folder is located at /spec/app.spec.js
 
 ```
-npm run t
+npm run test
 ```
 
 ### Built With
@@ -67,4 +77,4 @@ npm run t
 
 ### Authors
 
-- **Kaiming Shen**[ArcSurfer73838](https://github.com/arcSurfer73878)
+- **Kaiming Shen** [ArcSurfer73838](https://github.com/arcSurfer73878)
