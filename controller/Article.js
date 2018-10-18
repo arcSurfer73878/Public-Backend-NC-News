@@ -48,9 +48,11 @@ exports.getCommentsByArticleId = (req, res, next) => {
 };
 
 exports.addCommentsByArticleId = (req, res, next) => {
-  req.body.belongs_to = req.params.article_id;
-  Comment.create(req.body)
-    .populate("created_by")
+  Comment.create({
+    body: req.body.body,
+    belongs_to: req.params.article_id,
+    created_by: req.body.created_by
+  })
     .then(comments => {
       res.status(201).send({ comments });
     })
