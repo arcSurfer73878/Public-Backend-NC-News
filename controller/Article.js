@@ -53,8 +53,8 @@ exports.addCommentsByArticleId = (req, res, next) => {
     belongs_to: req.params.article_id,
     created_by: req.body.created_by
   })
-    .then(comments => {
-      res.status(201).send({ comments });
+    .then(comment => {
+      res.status(201).send({ comment });
     })
     .catch(next);
 };
@@ -63,15 +63,15 @@ exports.updateArticleVote = (req, res, next) => {
   if (req.query.vote === "up") {
     Article.find({ _id: req.params.article_id })
       .update({ $inc: { votes: 1 } })
-      .then(articles => {
-        res.send({ articles });
+      .then(article => {
+        res.send({ article });
       })
       .catch(next);
   } else if (req.query.vote === "down") {
     Article.find({ _id: req.params.article_id })
       .update({ $inc: { votes: -1 } })
-      .then(articles => {
-        res.send({ articles });
+      .then(article => {
+        res.send({ article });
       })
       .catch(next);
   }

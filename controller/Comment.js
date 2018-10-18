@@ -14,9 +14,9 @@ exports.getCommentId = (req, res, next) => {
   Comment.findOne({ _id: req.params.comment_id })
     .populate("created_by")
     .populate("belongs_to")
-    .then(comments => {
-      if (!comments) throw { status: 404, message: "bad request" };
-      res.send({ comments });
+    .then(comment => {
+      if (!comment) throw { status: 404, message: "bad request" };
+      res.send({ comment });
     })
     .catch(next);
 };
@@ -25,15 +25,15 @@ exports.updateCommentVote = (req, res, next) => {
   if (req.query.vote === "up") {
     Comment.find({ _id: req.params.comment_id })
       .update({ $inc: { votes: 1 } })
-      .then(comments => {
-        res.send({ comments });
+      .then(comment => {
+        res.send({ comment });
       })
       .catch(next);
   } else if (req.query.vote === "down") {
     Comment.find({ _id: req.params.comment_id })
       .update({ $inc: { votes: -1 } })
-      .then(comments => {
-        res.send({ comments });
+      .then(comment => {
+        res.send({ comment });
       })
       .catch(next);
   }

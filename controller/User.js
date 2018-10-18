@@ -10,9 +10,9 @@ exports.getAllUser = (req, res, next) => {
 
 exports.getUserByUsername = (req, res, next) => {
   User.findOne({ username: req.params.username })
-    .then(users => {
-      if (!users) throw { status: 404, message: "Page not found" };
-      res.send({ users });
+    .then(user => {
+      if (!user) throw { status: 404, message: "Page not found" };
+      res.send({ user });
     })
     .catch(next);
 };
