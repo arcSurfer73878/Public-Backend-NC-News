@@ -4,7 +4,7 @@ This is an API which will be displaying content from a MongoDB database. Users w
 
 ### Getting Started
 
-Fork and clone this repository and `cd` into it:
+Clone this repository and `cd` into it:
 
 ```
 $ git clone <your fork's URL>
@@ -35,7 +35,7 @@ body-parser
 Make sure you've navigated into the folder and install all dependecies using:
 
 ```
-npm i <Node module>
+npm i
 ```
 
 ### Config
