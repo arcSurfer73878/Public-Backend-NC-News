@@ -31,7 +31,7 @@ mongoose,
 promises
 ```
 
-Make sure you've navigated into the folder and install all dependecies using:
+Make sure you've navigated into the folder and install all dependencies using:
 
 ```
 npm i
