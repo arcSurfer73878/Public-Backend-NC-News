@@ -4,11 +4,10 @@ This is an API which will be displaying content from a MongoDB database. Users w
 
 ### Getting Started
 
-Clone this repository and `cd` into it:
+Clone this repository:
 
 ```
-$ git clone <your fork's URL>
-$ cd BE2-northcoders-news
+$ git clone https://github.com/arcSurfer73878/Public-Backend-NC-News
 ```
 
 ### Prerequisites
@@ -25,11 +24,11 @@ Essential Node modules:
 
 ```
 express
-mocha
-chai
-mongoose
-supertest
-body-parser
+cors,
+body-parser,
+db,
+mongoose,
+promises
 ```
 
 Make sure you've navigated into the folder and install all dependecies using:
